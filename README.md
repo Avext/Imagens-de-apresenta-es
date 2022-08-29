@@ -32,10 +32,15 @@ A partir deste projeto procuramos organizar de forma lógica o modelo de negóci
 Como resultados deste projeto pretende-se gerar informações estratégicas para a área de ensino da Resilia. As principais consultas que iremos realizar são:
 
 ◆ Selecionar a quantidade total de estudantes cadastrados no banco;
+
 ◆ Selecionar todos os estudantes com os respectivos cursos que eles estão cadastrados;
+
 ◆ Selecionar quais facilitadores atuam em mais de uma turma;
+
 ◆ Consulta 1;
+
 ◆ Consulta 2;
+
 ◆ Consulta 3.
 
 
@@ -45,7 +50,9 @@ Como resultados deste projeto pretende-se gerar informações estratégicas para
 A ferramenta utilizada para a modelagem do banco foi o [  ](https://dbdiagram.io/home)dbdiagram.io - Database Relationship Diagrams Design Tool e como sistema gerenciador do banco de dados foi utilizado o PostgreSQL 14.5 juntamente com o pgAdmin 4 como plataforma de administração do banco de dados. Com essas ferramentas foi possível executar:
 
 ● Modelagem completa do banco de dados com entidades, atributos e relacionamentos;
+
 ● Scripts SQL de criação das tabelas com seus atributos e chaves;
+
 ● Resultado de das consultas propostas na realização do projeto.
 
 ### Estrutura do banco
