@@ -37,7 +37,7 @@ Como resultados deste projeto pretende-se gerar informações estratégicas para
 
 ◆ Selecionar quais facilitadores atuam em mais de uma turma;
 
-◆ Consulta 1;
+◆ Selecionar ;
 
 ◆ Consulta 2;
 
@@ -63,12 +63,94 @@ O banco de dados está estruturado de acordo com o diagrama a seguir:
 
 ### Entidades e relacionamentos
 
-- Existem duas validações de entrada no código, que estão em funções: uma para o caso do input ser um inteiro ou uma string. No caso, se eu desejo que minha entrada seja um inteiro, meu código só aceita esse tipo de entradas, e em caso de outro tipo, ele entra em um loop, informando que a entrada está no formato incorreto e pedindo para o usuário inserir uma entrada válida. O mesmo se aplica a entrada de texto: se o usuário entrar com um número, entra no loop, até ser fornecido uma entrada do tipo string.
+Como pode sr observado no MER, este é composto por 11 entidades com relacionamentos entre si. Sendo esquematizado da seguinte forma:
+
+- A entidade colaborabores é composta pelos atributos e tipos: 
+
+  		colaborador_id int 
+  		colaborador_nome varchar
+  		colaborador_email varchar
+  		colaborador_telefone varchar
+  		colaborador_cpf varchar
+  		colaborador_data_nascimento date
+  		colaborador_idade int
+  		colaborador_departamento int (Atributo que informa o departamento do colaborador a partir de uma chave estrangeira ligada à tabela departamento)
+  		id_genero int (Atributo que informa gênero do colaborador a partir de uma chave estrangeira ligada à tabela gêneros)
+  		id_estado int (Atributo que informa o estado do colaborador a partir de uma chave estrangeira ligada à tabela estados)
+  		id_escolaridade int (Atributo que informa a escolaridade do colaborador a partir de uma chave estrangeira ligada à tabela estados)
+  		ativo bool (Atributo que informa se o colaborador está ativo com TRUE ou FALSE)
+		
+- A entidade alunos é composta pelos atributos e tipos: 
+
+		aluno_nome varchar
+		aluno_email varchar
+		aluno_elefone varchar
+		aluno_cpf varchar pk 
+		aluno_data_nascimento date
+		aluno_idade int
+		turma_id int (Atributo que informa a turma atual que o aluno está vinculado a partir de uma chave estrangeira ligada à tabela turma)
+		genero_id int (Atributo que informa gênero do aluno a partir de uma chave estrangeira ligada à tabela gêneros)
+		estado_id int (Atributo que informa o estado do aluno a partir de uma chave estrangeira ligada à tabela estados)
+		escolaridade_id int (Atributo que informa a escolaridade do aluno a partir de uma chave estrangeira ligada à tabela estados)
+		ativo bool (Atributo que informa se o aluno está ativo em algum curso com TRUE ou FALSE)
+		
+- A entidade gêneros informa o gênero do colaborador ou aluno a que é vinculada e é composta pelos atributos e tipos: 
+
+		genero_id int pk
+		genero_nome varchar (opções)
+
+- A entidade estados informa o estado de residência do colaborador ou aluno a que é vinculada e é composta pelos atributos e tipos: 
+
+		estado_id int pk 
+		estado_nome varchar(255) [not null, unique]
+		
+- A entidade escolaridade informa a escolaridade do colaborador ou aluno a que é vinculada e é composta pelos atributos e tipos:
+
+		escolaridade_id int pk
+		escolaridade_nome varchar(255) [not null, unique]
+		
+- A entidade departamentos informa os departamentos existentes na Resilia e é composta pelos atributos e tipos:
+
+		departamento_id int
+		departamento_nome varchar [unique]
+		departamento_area varchar(255) [not null]
+		
+- A entidade cursos informa os cursos existentes na Resilia e é composta pelos atributos e tipos:
+
+		curso_id int pk
+		curso_nome varchar
+		curso_area varchar
+		curso_modulos int (Atributo que informa os módulos que compõem o curso a partir de uma chave estrangeira ligada à tabela modulos)
+		
+- A entidade modulos informa os módulos que compõem os cursos existentes na Resilia e é composta pelos atributos e tipos:
+
+		modulo_id int
+		modulo_nome varchar [unique]
+		modulo_disciplinas varchar
+		
+- A entidade turma informa as turmas que formadas pela Resilia para determinado curso e é composta pelos atributos e tipos:
+
+		turma_id int pk
+		nome varchar
+		curso_id int (Atributo que informa o curso que está turma está vinculada a partir de uma chave estrangeira ligada à tabela cursos)
+		data_inicio date
+		data_termino date
+		
+- A entidade turma_alunos informa todos os alunos que estão e/ou estiveram em uma determinada turma da Resilia e é composta pelos atributos e tipos:
+
+		aluno_cpf varchar (Atributo que informa o cpf do aluno e está vinculado a partir de uma chave estrangeira ligada à tabela alunos)
+		turma_id int (Atributo que informa a turma a qual o aluno e está vinculado a partir de uma chave estrangeira ligada à tabela turma)
+		
+- A entidade facilitadores informa quais a turmas e módulos que o facilitador possui vínculo é composta pelos atributos e tipos:
+
+		colaborador_id int pk (Atributo que informa o id do facilitador e está vinculado a partir de uma chave estrangeira ligada à tabela colaboradores)
+		id_turma int (Atributo que informa o id da turma a qual o facilitador está vinculado a partir de uma chave estrangeira ligada à tabela turma)
+		id_modulo int (Atributo que informa o id do módulo o qual o facilitador está vinculado a partir de uma chave estrangeira ligada à tabela módulos)
 
 ### Consultas
-		
 
-- Após informar a sua idade e gênero o usuário responderá as seguintes perguntas e opções de resposta:
+
+- Listamos aqui as consultas realizadas e os seus respectivos códigos excutados no pgAdmin 4:
 
 		[1] Você concluiu o ensino médio? Sim (1), Não (2) e Não sei responder (3)
 		
