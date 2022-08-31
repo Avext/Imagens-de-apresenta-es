@@ -59,7 +59,11 @@ A ferramenta utilizada para a modelagem do banco foi o [  ](https://dbdiagram.io
 
 O banco de dados está estruturado de acordo com o diagrama a seguir:
 		
-![](https://raw.githubusercontent.com/Avext/Imagens-de-apresenta-es/main/resiliam3s7.png)
+![](https://raw.githubusercontent.com/Avext/Imagens-de-apresenta-es/main/m3s73.png)
+
+Astrutura completa está disponível abaixo:
+
+[Modelo DBDiagram](https://dbdiagram.io/d/62f55dcdc2d9cf52fa90877d).
 
 ### Entidades e relacionamentos
 
